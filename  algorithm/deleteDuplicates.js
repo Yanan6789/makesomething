@@ -2,7 +2,6 @@
 
 var deleteDuplicates = function(head){
   let p = head
- 
   while(p && p.next){
     if(p.val === p.next.val){
       p.next = p.next.next
@@ -10,7 +9,9 @@ var deleteDuplicates = function(head){
       p = p.next
     }
   }
-  return head
+  return ListNode
 }
 
 deleteDuplicates([1,1,2])
+
+
