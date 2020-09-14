@@ -45,7 +45,7 @@ const tree = {
 // dfs(tree)
 
 /** 
- * bfs
+ * bfs 广度优先遍历
  */
 
 //  const bfs = (root) =>{
