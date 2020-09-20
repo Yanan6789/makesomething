@@ -163,23 +163,35 @@
 // console.log(dog.age);
 
 
-// class Animal  {
-//   constructor(type){
-//     this.type = type
-//   }
+class Animal  {
+  constructor(type){
+    this.type = type
+  }
   
-//   eat(){
-//     Animal.walk()
-//     console.log('i am eat food');
-//   }
+  eat(){
+    Animal.walk()
+    console.log('i am eat food');
+  }
 
-//   static walk(){
-//     console.log('i am walking');
-//   }
-// }
+  static walk(){
+    console.log('i am walking');
+  }
+}
 
-// let dog = new Animal('dog')
-// dog.eat()
+
+class Dog extends Animal{
+  // constructor(type){
+  //   super(type)
+  // }
+}
+
+let dog = new Dog('dog')
+dog.eat()
+
+
+
+
+
 
 // let Animal = function(type){
 //   this.type = type
@@ -193,7 +205,16 @@
 //   console.log('i am walking');
 // }
 
-// let dog = new Animal('dog')
+// let Dog = function(){
+//   // 初始化父类的构造函数
+//   Animal.call(this, 'dog')
+//   this.run = function(){
+//     console.log('i can run')
+//   }
+// }
+// Dog.prototype = Animal.prototype
+
+// let dog = new Dog('dog')
 // dog.eat()
 
 
