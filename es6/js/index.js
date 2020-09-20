@@ -163,30 +163,30 @@
 // console.log(dog.age);
 
 
-class Animal  {
-  constructor(type){
-    this.type = type
-  }
+// class Animal  {
+//   constructor(type){
+//     this.type = type
+//   }
   
-  eat(){
-    Animal.walk()
-    console.log('i am eat food');
-  }
+//   eat(){
+//     Animal.walk()
+//     console.log('i am eat food');
+//   }
 
-  static walk(){
-    console.log('i am walking');
-  }
-}
+//   static walk(){
+//     console.log('i am walking');
+//   }
+// }
 
 
-class Dog extends Animal{
-  // constructor(type){
-  //   super(type)
-  // }
-}
+// class Dog extends Animal{
+//   // constructor(type){
+//   //   super(type)
+//   // }
+// }
 
-let dog = new Dog('dog')
-dog.eat()
+// let dog = new Dog('dog')
+// dog.eat()
 
 
 
@@ -218,3 +218,148 @@ dog.eat()
 // dog.eat()
 
 
+// rest parameter
+
+// function f (...nums){
+//   console.log(nums.length);
+// }
+// f(1,2,3,5)
+
+
+
+// 计算三角形周长
+
+// function sum(x=1,y=2,z=2){
+//   console.log(x+y+z);
+// }
+
+// let data = [4,5,6]
+// sum(...data)
+
+
+// 箭头函数
+
+// let hello = () =>{
+//   console.log(111);
+// }
+// hello()
+
+// 箭头函数中的this
+
+// let test = {
+//   name: 'test',
+//   say: () => {
+//     console.log(this.name);
+//   }
+// }
+
+// test.say()
+
+
+
+/**
+ * Object
+ */
+
+//  let obj = {
+//    x:1,
+//    y:2,
+//    // 异步
+//    * hello(){
+//      console.log('hello world');
+//    }
+//  }
+//  obj.hello().next()
+
+
+/**
+ * Set
+ */
+
+//  let s = new Set([1,1])
+//  s.add('hello')
+// //  s.delete('hello')
+// //  s.clear()
+// console.log(s.size);
+// console.log(s.has(11));
+
+// console.log(s.keys());
+// console.log(s.values());
+// console.log(s.entries());
+
+
+/**
+ * Map  key=>value
+ */
+
+//  let map = new Map([[1,2],[3,4]])
+//  map.set(5,6)
+//  map.set(5,33)
+//  map.delete(5)
+// // map.clear()
+// console.log(map)
+// console.log(map.size)
+
+// let obj = {
+//   a: 'value-a',
+//   b: 'value-b'
+// }
+// map.forEach((value,key) => {
+//   console.log(key,value);
+// });
+
+// for(let [key,value] of map){
+//   console.log(key,value);
+// }
+
+
+/**
+ * 对象的复制
+ */
+
+//  let target = {
+//   a: 'value-a',
+//   b: {
+//     c: {
+//       d: null
+//     },
+//     e: 4
+//   },
+//   f: 5
+//  }
+//  let source = {
+//   a: 'value-a',
+//   b: {
+//     c: {
+//       d: undefined
+//     },
+//     e: 4
+//   },
+//   f: 5
+// }
+
+// Object.assign(target,source)
+
+// console.log(target);
+
+// const a = 'aaa_aa_a'
+
+// const r1 = /a+/g
+// const r2 = /a+/y
+
+// console.log(r1.exec(a))
+// console.log(r2.exec(a))
+
+// console.log(r1.exec(a))
+// console.log(r2.exec(a))
+
+/**
+ * template 模板字符串
+ */
+
+ const a = 10
+ const b = 20
+ const c = 'javascript'
+
+const str = `hello my age is ${a+b}, i love ${c}`
+console.log(str);
