@@ -357,9 +357,32 @@
  * template 模板字符串
  */
 
- const a = 10
- const b = 20
- const c = 'javascript'
+//  const a = 10
+//  const b = 20
+//  const c = 'javascript'
 
-const str = `hello my age is ${a+b}, i love ${c}`
-console.log(str);
+// const str = `hello my age is ${a+b}, i love ${c}`
+// console.log(str);
+
+
+/**
+ * 解构赋值
+ */
+
+//  let arr = ['hello', 'world','aaa','bbb']
+//  let [first,...second] = arr
+//  console.log(first);
+//  console.log(second);
+
+
+function loadScript (src){
+  let script = document.createElement('script')
+  script.src = src
+  document.head.append(script)
+}
+
+function test(){
+  console.log('test');
+}
+loadScript('./1.js')
+test()
