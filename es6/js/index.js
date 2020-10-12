@@ -375,14 +375,39 @@
 //  console.log(second);
 
 
-function loadScript (src){
-  let script = document.createElement('script')
-  script.src = src
-  document.head.append(script)
+// function loadScript (src,cb){
+//   let script = document.createElement('script')
+//   script.src = src
+//   script.onload = () =>{ cb(src)}
+//   document.head.append(script)
+// }
+
+// function test(name){
+//   console.log(name);
+// }
+// loadScript('./1.js',function(script){
+//   loadScript('./2.js',function(script){
+//     loadScript('./3.js',function(script){
+  
+//     })
+//   })
+// })
+
+/**
+ * 
+ * @param {link} src 
+ */
+function loadScript(src){
+  return new Promise((resolve,reject)=>{
+    let script = document.createElement('script')
+    script.src = src
+    script.onload = () => resolve(src)
+    script.onerror = (err) => reject(err)
+    document.head.append(script)
+  })
 }
 
-function test(){
-  console.log('test');
-}
 loadScript('./1.js')
-test()
+  .then(loadScript('./2.js'))
+  .then(loadScript('./3.js'))
+
