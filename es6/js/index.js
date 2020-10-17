@@ -37,14 +37,12 @@
 //   C:[9,9,9,9,9]
 // }
 
-
 // 转换
 // es5
 // let args = [].slice.call(arguments)
 
 // // Array.prototype.from
 // let args = Array.from(arguments)
-
 
 // let array = Array.from({length:10},()=>{
 //   return 1
@@ -56,12 +54,10 @@
 // let array  = Array.of(1,2,8,4,5)
 // console.log(array);
 
-
 // Array.fill
 
 // let arr = Array(5).fill(1)
 // console.log(arr);
-
 
 // let array = [1,2,3,4,5]
 
@@ -72,7 +68,7 @@
 
 // let res1 = array.find(item=> item===6)
 // console.log(res1);
-// 
+//
 // let res = array.includes(3)
 // console.log(res)
 
@@ -80,9 +76,6 @@
 
 // let res = array.findIndex(item=>item===2)
 // console.log(res);
-
-
-
 
 /**
  * class 类
@@ -127,11 +120,9 @@
 // console.log(dog);
 // console.log(monkey);
 
-
 // dog.eat()
 // monkey.eat()
 // console.log(typeof Animal);
-
 
 // 私有属性
 // 只读
@@ -162,12 +153,11 @@
 // dog.age = 6
 // console.log(dog.age);
 
-
 // class Animal  {
 //   constructor(type){
 //     this.type = type
 //   }
-  
+
 //   eat(){
 //     Animal.walk()
 //     console.log('i am eat food');
@@ -178,7 +168,6 @@
 //   }
 // }
 
-
 // class Dog extends Animal{
 //   // constructor(type){
 //   //   super(type)
@@ -187,11 +176,6 @@
 
 // let dog = new Dog('dog')
 // dog.eat()
-
-
-
-
-
 
 // let Animal = function(type){
 //   this.type = type
@@ -217,15 +201,12 @@
 // let dog = new Dog('dog')
 // dog.eat()
 
-
 // rest parameter
 
 // function f (...nums){
 //   console.log(nums.length);
 // }
 // f(1,2,3,5)
-
-
 
 // 计算三角形周长
 
@@ -235,7 +216,6 @@
 
 // let data = [4,5,6]
 // sum(...data)
-
 
 // 箭头函数
 
@@ -255,8 +235,6 @@
 
 // test.say()
 
-
-
 /**
  * Object
  */
@@ -270,7 +248,6 @@
 //    }
 //  }
 //  obj.hello().next()
-
 
 /**
  * Set
@@ -286,7 +263,6 @@
 // console.log(s.keys());
 // console.log(s.values());
 // console.log(s.entries());
-
 
 /**
  * Map  key=>value
@@ -311,7 +287,6 @@
 // for(let [key,value] of map){
 //   console.log(key,value);
 // }
-
 
 /**
  * 对象的复制
@@ -364,7 +339,6 @@
 // const str = `hello my age is ${a+b}, i love ${c}`
 // console.log(str);
 
-
 /**
  * 解构赋值
  */
@@ -373,7 +347,6 @@
 //  let [first,...second] = arr
 //  console.log(first);
 //  console.log(second);
-
 
 // function loadScript (src,cb){
 //   let script = document.createElement('script')
@@ -388,26 +361,148 @@
 // loadScript('./1.js',function(script){
 //   loadScript('./2.js',function(script){
 //     loadScript('./3.js',function(script){
-  
+
 //     })
 //   })
 // })
 
 /**
- * 
- * @param {link} src 
+ *
+ * @param {link} src
  */
-function loadScript(src){
-  return new Promise((resolve,reject)=>{
-    let script = document.createElement('script')
-    script.src = src
-    script.onload = () => resolve(src)
-    script.onerror = (err) => reject(err)
-    document.head.append(script)
-  })
+// function loadScript(src){
+//   return new Promise((resolve,reject)=>{
+//     let script = document.createElement('script')
+//     script.src = src
+//     script.onload = () => resolve(src)
+//     script.onerror = (err) => reject(err)
+//     document.head.append(script)
+//   })
+// }
+
+// loadScript('./1.js')
+//   .then(loadScript('./2.js'))
+//   .then(loadScript('./3.js'))
+//   .catch(err => {
+//     console.log(err)
+//   })
+
+/**
+ * promise.all
+ * 并行接口的实现
+ */
+
+//    const p1 = Promise.resolve(1)
+//    const p2 = Promise.resolve(2)
+//    const p3 = Promise.resolve(3)
+
+// Promise.all([p1,p2,p3])
+//   .then((value)=>{
+//     console.log(value);
+//   })
+
+/**
+ * promise.race
+ */
+
+//  const p1 = ()=>{
+//    return new Promise((resolve,reject)=>{
+//     setTimeout(() => {
+//       resolve(1)
+//     }, 1000)
+//    })
+//  }
+
+//  const p2 = () =>{
+//   return new Promise((resolve,reject)=>{
+//     setTimeout(() => {
+//       resolve(2)
+//     }, 3000)
+//   })
+//  }
+
+//  Promise.race([p1(),p2()]).then((value)=>{
+//    console.log(value);
+//  })
+
+/**
+ * proxy
+ */
+
+//  let o = {
+//    name: 'pearymam',
+//    price: 190
+//  }
+
+//  let d = new Proxy(o, {
+//    get(target,key){
+//       if(key==='price'){
+//         return target[key]+20
+//       }else{
+//         return target[key]
+//       }
+//    }
+
+//  })
+
+//  console.log(d.price)
+
+// class Component {
+//   constructor(){
+//     this.proxy = new Proxy({
+//       id: Math.random().toString(36).slice(-8)
+//     }, {})
+//   }
+//   get id(){
+//     return this.proxy.id
+//   }
+// }
+
+// let com = new Component()
+// let com2 = new Component()
+// for(let i=0; i<10;i++){
+//   console.log(com.id, com2.id)
+// }
+
+// com.id = 'abc'
+// console.log(com.id, com2.id)
+
+//  let o = {
+//    name: 'pearymam',
+//    price: 190
+//  }
+
+//  let d = Proxy.revocable(o, {
+//    get(target,key){
+//       if(key==='price'){
+//         return target[key]+20
+//       }else{
+//         return target[key]
+//       }
+//    }
+
+//  })
+
+//  console.log(d.proxy.price)
+
+//  setTimeout(() => {
+//     d.revoke()
+//     console.log(d.proxy.price)
+//  }, 1000)
+
+/**
+ *
+ */
+
+function* loop(params) {
+  for (let i = 0; i < 5; i++) {
+    yield console.log(i)
+  }
 }
 
-loadScript('./1.js')
-  .then(loadScript('./2.js'))
-  .then(loadScript('./3.js'))
-
+const l = loop()
+l.next()
+l.next()
+l.next()
+// loop().next()
+// loop().next().next()
