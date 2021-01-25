@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+ .circle {
+    animation: circle 4s linear forwards;
+  } 
+
+  @keyframes circle {
+    from {
+      stroke-dasharray: 0 440;
+    }
+    to {
+      stroke-dasharray: 440 0;
+    }
+  } 
+  </style>
+</head>
+<body>
+  <svg width='200' height='200' viewBox='0 0 200 200'>
+    <circle cx='100' cy='100' r='70' fill='none' stroke='gray' stroke-width='30'/>
+    <circle 
+      class='circle'
+      cx='100' 
+      cy='100' 
+      r='70' 
+      fill='none' 
+      stroke='#e80' 
+      stroke-width='30' 
+      stroke-dasharray='10'
+      transform="matrix(0,-1,1,0,0,200)"
+      />
+  </svg>
+
+</body>
+</html>
+
+
