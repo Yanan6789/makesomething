@@ -1,7 +1,7 @@
 // dfs
 
 const tree = {
-  val: 'a',
+  val: '2',
   children: [
     {
       val: 'b',
