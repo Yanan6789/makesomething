@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 /**
  * async 执行顺序
  */
@@ -138,3 +139,18 @@ var obj = {
   }
 }
 console.log(obj.fn())
+=======
+
+
+
+
+async function fn1(){
+  console.log(111);
+  await
+}
+
+async function fn2(){
+  console.log(222);
+}
+
+>>>>>>> 7f51d8af6fdf03b9527711b1201821bec8cb8760

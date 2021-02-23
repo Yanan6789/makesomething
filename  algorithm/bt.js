@@ -3,18 +3,18 @@ const bt = {
   left:{
     val: 2,
     left:{
-      val: 3,
-      left:null,
-      right:null
+      val:3,
+      left: null,
+      right: null
     },
     right:{
       val: 4,
-      left:{
+      right: null,
+      left: {
         val: 5,
         left: null,
-        right:null
-      },
-      right: null
+        right: null
+      }
     }
   },
   right:{
