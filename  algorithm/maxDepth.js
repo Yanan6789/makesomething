@@ -15,5 +15,5 @@ const maxDepth = (root) =>{
   
 }
 
-const r = maxDepth(bt)
+  const r = maxDepth(bt)
 console.log(r)
