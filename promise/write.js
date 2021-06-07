@@ -89,37 +89,40 @@ function throttle(fn, delay) {
 
 
 
-console.log(1);
+console.log(1); // 1
+
 setTimeout(() => {
-  console.log(2);
+  console.log(2);  //5
   process.nextTick(() => {
-    console.log(3);
+    console.log(3); // 9
   });
   new Promise((resolve) => {
-    console.log(4);
+    console.log(4); // 6
     resolve();
   }).then(() => {
-    console.log(5);
+    console.log(5); // 11
   });
 });
+
 new Promise((resolve) => {
-  console.log(7);
+  console.log(7); // 2
   resolve();
 }).then(() => {
-  console.log(8);
+  console.log(8); // 4
 });
 process.nextTick(() => {
-  console.log(6);
+  console.log(6); // 3
 });
+
 setTimeout(() => {
-  console.log(9);
+  console.log(9); // 7
   process.nextTick(() => {
-    console.log(10);
+    console.log(10); // 10
   });
   new Promise((resolve) => {
-    console.log(11);
+    console.log(11); // 8
     resolve();
   }).then(() => {
-    console.log(12);
+    console.log(12); //  12
   });
 });
