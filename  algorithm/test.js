@@ -31,20 +31,57 @@
  * @return {number}
  */
 
-var lengthOfLongestSubstring = function(s) {
- let arr = []
- let max = 0
+// var lengthOfLongestSubstring = function(s) {
+//  let arr = []
+//  let max = 0
 
- for(let i = 0; i< s.length; i++){
-   let index = arr.indexOf(s[i])
-  if(index !== -1){
-    arr.splice(0, index+1)
+//  for(let i = 0; i< s.length; i++){
+//    let index = arr.indexOf(s[i])
+//   if(index !== -1){
+//     arr.splice(0, index+1)
+//   }
+//    arr.push(s.charAt(i))
+//    max = Math.max(arr.length, max)
+//  }
+//  return max
+// }
+
+// const result = lengthOfLongestSubstring('abcabcbb')
+// console.log(result)
+
+
+let a = {
+  name: 'aaa',
+  position: {
+    age: 11
   }
-   arr.push(s.charAt(i))
-   max = Math.max(arr.length, max)
- }
- return max
+}
+let b = deepClone(a)
+b.position.age = 12222
+console.log(a)
+
+function deepClone(obj = {}) {
+  if (typeof obj !== 'object' || obj == null) {
+    return
+  }
+
+  let result
+  if (obj instanceof Array) {
+    result = []
+  } else {
+    result = {}
+  }
+
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      result[key] = deepClone(result[key])
+    }
+  }
+  return result
 }
 
-const result = lengthOfLongestSubstring('abcabcbb')
-console.log(result)
+/**
+ * - 防抖、节流理解
+ * - call 、 apply 、 bind实现
+ * - promise 实现
+ */
