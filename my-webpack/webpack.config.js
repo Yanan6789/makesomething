@@ -13,7 +13,7 @@ const eslintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
 
-  mode: 'development',
+  mode: 'production',
 
   entry: './src/index.js',
 
@@ -58,6 +58,15 @@ module.exports = {
           'postcss-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.(png|jpe?g|svg|gif)$/i,
+        use:{
+          loader: 'url-loader',
+          options:{
+            limit: 10240
+          }
+        }
       }
     ]
   },
