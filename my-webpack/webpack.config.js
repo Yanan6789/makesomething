@@ -59,6 +59,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|svg|gif)$/i,
+        include: /assets/,
         use:{
           loader: 'url-loader', // 默认采用es module解析
           options:{
@@ -69,7 +70,8 @@ module.exports = {
         }
       },
       {
-        test: /\.(eot|ttf|woff|woff2)$/i,
+        test: /\.(eot|svg|ttf|woff|woff2)$/i,
+        include: /fonts/,
         use:{
           loader: 'file-loader', 
           options:{
