@@ -9,9 +9,6 @@ const eslintPlugin = require('eslint-webpack-plugin')
 const copyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-
-
-
 module.exports = {
 
   mode: 'production',
@@ -77,8 +74,7 @@ module.exports = {
           loader: 'file-loader', 
           options:{
             esModule: false,
-            outputPath: 'fonts',
-            name: '[name].[ext]'
+            name: 'fonts/[name].[ext]',
           }
         }
       },
