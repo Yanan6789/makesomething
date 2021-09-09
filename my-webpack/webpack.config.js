@@ -6,7 +6,8 @@ const styleLintPlugin = require('stylelint-webpack-plugin')
 const optimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin")
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const eslintPlugin = require('eslint-webpack-plugin')
-
+const copyWebpackPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 
 
@@ -62,12 +63,25 @@ module.exports = {
       {
         test: /\.(png|jpe?g|svg|gif)$/i,
         use:{
-          loader: 'url-loader',
+          loader: 'url-loader', // 默认采用es module解析
           options:{
-            limit: 10240
+            limit: 10240,
+            name: "image/[name].[ext]", // 图片原来的名称  ext是图片原来的后缀名
+            esModule: false
           }
         }
-      }
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/i,
+        use:{
+          loader: 'file-loader', 
+          options:{
+            esModule: false,
+            outputPath: 'fonts',
+            name: '[name].[ext]'
+          }
+        }
+      },
     ]
   },
   plugins: [
@@ -86,7 +100,7 @@ module.exports = {
     // html config
     new htmlWebpackPlugin({
       filename: 'index.html',
-      template: 'index.html',
+      template: 'index.ejs',
       title: "webpack demo",
       minfy: {
 
@@ -94,7 +108,16 @@ module.exports = {
     }),
     new eslintPlugin({
       fix: true
-    })
+    }),
+    new copyWebpackPlugin({
+      patterns:[
+        {
+          from: 'public',
+          to: 'public'
+        }
+      ]
+    }),
+    new CleanWebpackPlugin()
   ],
 
   devServer: {
