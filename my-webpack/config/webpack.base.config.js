@@ -1,23 +1,38 @@
-// webpack config
-
 const { resolve } = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const styleLintPlugin = require('stylelint-webpack-plugin')
-const optimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin")
-const htmlWebpackPlugin = require('html-webpack-plugin')
 const eslintPlugin = require('eslint-webpack-plugin')
 const copyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
+
+
+const commonStyleLoaders = [
+  MiniCssExtractPlugin.loader,
+  'css-loader',
+  'postcss-loader'
+]
+
 module.exports = {
-
-  mode: 'production',
-
-  entry: './src/index.js',
+  // 单入口
+  // entry: './src/index.js',
+  
+  entry: {
+    index: './src/index.js',
+    about: './src/about.js',
+  },
 
   output: {
-    path: resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    path: resolve(__dirname, '../dist'),
+    filename: '[name].bundle.js'
+  },
+  devtool: 'source-map',
+
+  // 优化策略
+  optimization:{
+    splitChunks:{
+      chunks: 'all'
+    }
   },
 
   module: {
@@ -29,6 +44,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
+            // 第二次构建时会读取之前的缓存
+            cacheDirectory: true,
             presets: [
               ['@babel/preset-env', { 
                 targets: "defaults" ,
@@ -42,18 +59,12 @@ module.exports = {
       // 指定多个配置规则
       {
         test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader'
-        ]
+        use: commonStyleLoaders
       },
       {
         test: /\.scss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
+          ...commonStyleLoaders,
           'sass-loader'
         ]
       },
@@ -84,21 +95,11 @@ module.exports = {
       files: ['src/css/*.{css,less,sass,scss}']
     }),
 
-    // 压缩css
-    new optimizeCssAssetsWebpackPlugin(),
+  
 
-    // html config
-    new htmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.ejs',
-      title: "webpack demo",
-      minfy: {
-
-      }
-    }),
-    new eslintPlugin({
-      fix: true
-    }),
+    // new eslintPlugin({
+    //   fix: true
+    // }),
     new copyWebpackPlugin({
       patterns:[
         {
@@ -110,24 +111,6 @@ module.exports = {
     new CleanWebpackPlugin()
   ],
 
-  devServer: {
-    compress: true, // gzip compress
-    port: 9200,
-    open: true,
-    liveReload: true,
-     // proxySetup
-    proxy:{
-      
-      '/api':{
-        target: 'https://api.github.com',
-        pathRewrite:{
-          '^/api': ''
-        },
-        changeOrigin: true,
-      }
-    }
-
-  },
   target: 'web',
 
   performance:{
